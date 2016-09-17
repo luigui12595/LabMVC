@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="b31359Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="cuenta">
+    <Key>
+      <PropertyRef Name="cedula" />
+      <PropertyRef Name="numero" />
+    </Key>
+    <Property Name="tipo" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cedula" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="numero" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="persona" Relationship="Self.fk_cedula_cuenta" FromRole="cuenta" ToRole="persona" />
+  </EntityType>
+  <EntityType Name="persona">
+    <Key>
+      <PropertyRef Name="cedula" />
+    </Key>
+    <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellido1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellido2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="cedula" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="correo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="direccion" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="cuenta" Relationship="Self.fk_cedula_cuenta" FromRole="persona" ToRole="cuenta" />
+    <NavigationProperty Name="telefono" Relationship="Self.fk_cedula_telefono" FromRole="persona" ToRole="telefono" />
+  </EntityType>
+  <EntityType Name="telefono">
+    <Key>
+      <PropertyRef Name="telefono1" />
+      <PropertyRef Name="cedula" />
+    </Key>
+    <Property Name="telefono1" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cedula" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="persona" Relationship="Self.fk_cedula_telefono" FromRole="telefono" ToRole="persona" />
+  </EntityType>
+  <Association Name="fk_cedula_cuenta">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="cuenta" Type="Self.cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="cedula" />
+      </Principal>
+      <Dependent Role="cuenta">
+        <PropertyRef Name="cedula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cedula_telefono">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="telefono" Type="Self.telefono" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="cedula" />
+      </Principal>
+      <Dependent Role="telefono">
+        <PropertyRef Name="cedula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="cuenta" EntityType="Self.cuenta" />
+    <EntitySet Name="persona" EntityType="Self.persona" />
+    <EntitySet Name="telefono" EntityType="Self.telefono" />
+    <AssociationSet Name="fk_cedula_cuenta" Association="Self.fk_cedula_cuenta">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="cuenta" EntitySet="cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cedula_telefono" Association="Self.fk_cedula_telefono">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="telefono" EntitySet="telefono" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="b31359Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cuenta">
+    <Key>
+      <PropertyRef Name="cedula" />
+      <PropertyRef Name="numero" />
+    </Key>
+    <Property Name="tipo" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="cedula" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="numero" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="persona">
+    <Key>
+      <PropertyRef Name="cedula" />
+    </Key>
+    <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="apellido1" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="apellido2" Type="varchar" MaxLength="20" />
+    <Property Name="cedula" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="correo" Type="varchar" MaxLength="10" />
+    <Property Name="direccion" Type="varchar" MaxLength="40" />
+  </EntityType>
+  <EntityType Name="telefono">
+    <Key>
+      <PropertyRef Name="telefono" />
+      <PropertyRef Name="cedula" />
+    </Key>
+    <Property Name="telefono" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="cedula" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_cedula_cuenta">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="cuenta" Type="Self.cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="cedula" />
+      </Principal>
+      <Dependent Role="cuenta">
+        <PropertyRef Name="cedula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cedula_telefono">
+    <End Role="persona" Type="Self.persona" Multiplicity="1" />
+    <End Role="telefono" Type="Self.telefono" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="persona">
+        <PropertyRef Name="cedula" />
+      </Principal>
+      <Dependent Role="telefono">
+        <PropertyRef Name="cedula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="b31359ModelStoreContainer">
+    <EntitySet Name="cuenta" EntityType="Self.cuenta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="persona" EntityType="Self.persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="telefono" EntityType="Self.telefono" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_cedula_cuenta" Association="Self.fk_cedula_cuenta">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="cuenta" EntitySet="cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cedula_telefono" Association="Self.fk_cedula_telefono">
+      <End Role="persona" EntitySet="persona" />
+      <End Role="telefono" EntitySet="telefono" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
