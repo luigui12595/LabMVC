@@ -11,6 +11,7 @@ namespace LaboratorioMVC.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class persona
     {
@@ -20,8 +21,16 @@ namespace LaboratorioMVC.Models
             this.cuenta = new HashSet<cuenta>();
             this.telefono = new HashSet<telefono>();
         }
-    
+
+        [StringLength(20)]
+        [Required(ErrorMessage = "El nombre es un campo requerido.")]
+        [Display(Name = "Nombre:")]
+        [RegularExpression(@"^[a-zA-Z''-'\s]+$", ErrorMessage = "El nombre solo puede estar compuesto por letras")]
         public string nombre { get; set; }
+        [StringLength(20)]
+        [Required(ErrorMessage = "El apellido es un campo requerido.")]
+        [Display(Name = "Nombre:")]
+        [RegularExpression(@"^[a-zA-Z''-'\s]+$", ErrorMessage = "El apellido solo puede estar compuesto por letras")]
         public string apellido1 { get; set; }
         public string apellido2 { get; set; }
         public string cedula { get; set; }

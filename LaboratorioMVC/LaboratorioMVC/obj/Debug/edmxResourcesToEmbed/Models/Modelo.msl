@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="b31359ModelStoreContainer" CdmEntityContainer="Entities">
+  <EntityContainerMapping StorageEntityContainer="ModeloEntitiesStoreContainer" CdmEntityContainer="Entities">
     <EntitySetMapping Name="cuenta">
-      <EntityTypeMapping TypeName="b31359Model.cuenta">
+      <EntityTypeMapping TypeName="ModeloEntities.cuenta">
         <MappingFragment StoreEntitySet="cuenta">
           <ScalarProperty Name="tipo" ColumnName="tipo" />
           <ScalarProperty Name="cedula" ColumnName="cedula" />
@@ -11,7 +11,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="persona">
-      <EntityTypeMapping TypeName="b31359Model.persona">
+      <EntityTypeMapping TypeName="ModeloEntities.persona">
         <MappingFragment StoreEntitySet="persona">
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="apellido1" ColumnName="apellido1" />
@@ -23,7 +23,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="telefono">
-      <EntityTypeMapping TypeName="b31359Model.telefono">
+      <EntityTypeMapping TypeName="ModeloEntities.telefono">
         <MappingFragment StoreEntitySet="telefono">
           <ScalarProperty Name="telefono1" ColumnName="telefono" />
           <ScalarProperty Name="cedula" ColumnName="cedula" />

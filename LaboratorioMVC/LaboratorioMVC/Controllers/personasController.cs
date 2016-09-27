@@ -10,17 +10,17 @@ using LaboratorioMVC.Models;
 
 namespace LaboratorioMVC.Controllers
 {
-    public class clientesController : Controller
+    public class personasController : Controller
     {
         private Entities db = new Entities();
 
-        // GET: clientes
+        // GET: personas
         public ActionResult Index()
         {
             return View(db.persona.ToList());
         }
 
-        // GET: clientes/Details/5
+        // GET: personas/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -35,13 +35,13 @@ namespace LaboratorioMVC.Controllers
             return View(persona);
         }
 
-        // GET: clientes/Create
+        // GET: personas/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: clientes/Create
+        // POST: personas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -58,7 +58,7 @@ namespace LaboratorioMVC.Controllers
             return View(persona);
         }
 
-        // GET: clientes/Edit/5
+        // GET: personas/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -73,7 +73,7 @@ namespace LaboratorioMVC.Controllers
             return View(persona);
         }
 
-        // POST: clientes/Edit/5
+        // POST: personas/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -89,7 +89,7 @@ namespace LaboratorioMVC.Controllers
             return View(persona);
         }
 
-        // GET: clientes/Delete/5
+        // GET: personas/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -104,7 +104,7 @@ namespace LaboratorioMVC.Controllers
             return View(persona);
         }
 
-        // POST: clientes/Delete/5
+        // POST: personas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)

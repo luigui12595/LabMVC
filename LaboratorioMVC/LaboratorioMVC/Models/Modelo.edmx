@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="b31359Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ModeloEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="cuenta">
           <Key>
             <PropertyRef Name="cedula" />
@@ -57,7 +57,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="b31359ModelStoreContainer">
+        <EntityContainer Name="ModeloEntitiesStoreContainer">
           <EntitySet Name="cuenta" EntityType="Self.cuenta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="persona" EntityType="Self.persona" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="telefono" EntityType="Self.telefono" Schema="dbo" store:Type="Tables" />
@@ -70,11 +70,10 @@
             <End Role="telefono" EntitySet="telefono" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="b31359Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ModeloEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="cuenta">
           <Key>
             <PropertyRef Name="cedula" />
@@ -149,9 +148,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="b31359ModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="ModeloEntitiesStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="cuenta">
-            <EntityTypeMapping TypeName="b31359Model.cuenta">
+            <EntityTypeMapping TypeName="ModeloEntities.cuenta">
               <MappingFragment StoreEntitySet="cuenta">
                 <ScalarProperty Name="tipo" ColumnName="tipo" />
                 <ScalarProperty Name="cedula" ColumnName="cedula" />
@@ -160,7 +159,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="persona">
-            <EntityTypeMapping TypeName="b31359Model.persona">
+            <EntityTypeMapping TypeName="ModeloEntities.persona">
               <MappingFragment StoreEntitySet="persona">
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="apellido1" ColumnName="apellido1" />
@@ -172,7 +171,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="telefono">
-            <EntityTypeMapping TypeName="b31359Model.telefono">
+            <EntityTypeMapping TypeName="ModeloEntities.telefono">
               <MappingFragment StoreEntitySet="telefono">
                 <ScalarProperty Name="telefono1" ColumnName="telefono" />
                 <ScalarProperty Name="cedula" ColumnName="cedula" />
